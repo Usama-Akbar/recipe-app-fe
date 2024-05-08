@@ -17,7 +17,7 @@ console.log(formData)
     const fetchRecipe = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`http://localhost:4000/api/recipe/getsinglerecipe/${id}`, {
+        const response = await fetch(`https://recipe-app-be-ivll.vercel.app/api/recipe/getsinglerecipe/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ console.log(formData)
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:4000/api/recipe/updaterecipe/${id}`, {
+      const response = await fetch(`https://recipe-app-be-ivll.vercel.app/api/recipe/updaterecipe/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

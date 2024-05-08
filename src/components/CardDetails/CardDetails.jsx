@@ -15,7 +15,7 @@ console.log(id)
   const deleteData = async () => {
     try{
     const token = localStorage.getItem("token")
-    const response = await fetch(`http://localhost:4000/api/recipe/deleterecipe/${id}`, {
+    const response = await fetch(`https://recipe-app-be-ivll.vercel.app/api/recipe/deleterecipe/${id}`, {
       method:"DELETE",
       headers:{
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ console.log(id)
     const fetchRecipe = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`http://localhost:4000/api/recipe/getsinglerecipe/${id}`, {
+        const response = await fetch(`https://recipe-app-be-ivll.vercel.app/api/recipe/getsinglerecipe/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

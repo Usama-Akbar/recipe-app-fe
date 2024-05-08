@@ -20,7 +20,7 @@ function Register() {
       password: userPassword
     };
 
-    fetch("http://localhost:4000/api/users/register", {
+    fetch("https://recipe-app-be-ivll.vercel.app/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

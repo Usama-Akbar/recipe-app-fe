@@ -17,7 +17,7 @@ function Login() {
       password: password
     };
 
-    fetch("http://localhost:4000/api/users/login", {
+    fetch("https://recipe-app-be-ivll.vercel.app/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -21,7 +21,7 @@ const Home = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "http://localhost:4000/api/recipe/allrecipies",
+        "https://recipe-app-be-ivll.vercel.app/api/recipe/allrecipies",
         {
           method: "GET",
           headers: {
@@ -51,12 +51,10 @@ const Home = () => {
     const term = e.target.value.toLowerCase();
     setSearchItem(term);
     if (term) {
-      // Filter the data based on the search term
       setFood(food.filter((item) => item.name.toLowerCase().startsWith(term)));
     } else {
-      // If the search term is empty, reset the food list to its original state
       const token = localStorage.getItem("token");
-      fetchData(token); // Fetch food data again
+      fetchData(token); 
     }
   };
   useEffect(() => {
@@ -120,7 +118,7 @@ const Home = () => {
     // ==========================Add Recipe Data==============================
     try {
       const response = await fetch(
-        "http://localhost:4000/api/recipe/addrecipe",
+        "https://recipe-app-be-ivll.vercel.app/api/recipe/addrecipe",
         {
           method: "POST",
           headers: {
