@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 const UpdateForm = () => {
   const { id } = useParams();
@@ -46,7 +49,6 @@ console.log(formData)
   };
 
   const handleSubmit = async (e) => {
-   
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
@@ -58,17 +60,28 @@ console.log(formData)
         },
         body: JSON.stringify(formData)
       });
+   
+      const res = await response.json();
+
+
       if (!response.ok) {
-        throw new Error("Failed to update recipe");
+        toast.error("Failed to update recipe");
+      } else {
+        toast.success(res.message);
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       }
-      navigate("/home")
+      
     } catch (error) {
-      console.error("Error updating recipe:", error);
+      toast.error("Error updating recipe: " + error.message);
     }
   };
+  
 
   return (
     <>
+    <ToastContainer />
       <div className="lg:flex lg:justify-center sm:flex w-full  px-4">
         <div className="lg:w-1/3 bg-white mt-20  rounded-lg">
           <h2 className="text-2xl text-center font-bold mb-4">Update Food Recipe</h2>

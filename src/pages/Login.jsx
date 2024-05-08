@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -36,12 +37,13 @@ function Login() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        setResponseMessage("Error occurred while logging in.");
+        toast.error("Error occurred while logging in.");
       });
   };
 
   return (
     <>
+    <ToastContainer />
       <h1 className="text-center text-[26px] font-[600]">Login Form</h1>
       <form onSubmit={handleLogin} className="max-w-sm lg:mx-auto mx-4 my-20">
         <div className="mb-5">

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button/Button";
 import cardImage from "../assets/image-1.jpg";
-
+import { ToastContainer, toast } from 'react-toastify';
 const Home = () => {
   const [searchItem, setSearchItem] = useState("");
   const [food, setFood] = useState([]);
@@ -36,7 +36,7 @@ const Home = () => {
       const data = await response.json();
       setFood(data.recipes);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      toast.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
@@ -129,10 +129,10 @@ const Home = () => {
         }
       );
       if (!response.ok) {
-        throw new Error("Failed to add recipe");
+        toast.error("Failed to add recipe");
       }
       setFetchReceipe(!fetchReceipe);
-      console.log("Recipe added successfully");
+      toast.success("Recipe added successfully");
       setName("");
       setIngredient("");
       setDescription("");
@@ -145,6 +145,7 @@ const Home = () => {
 
   return (
     <>
+    <ToastContainer/>
       <div className="lg:mt-10">
         <div className=" flex w-full justify-end lg:mt-[-20px] mb-10">
           <Button
@@ -235,7 +236,7 @@ const Home = () => {
             <h2 className="text-2xl text-center font-bold mb-4">Add Recipe</h2>
             <div>
               <form onSubmit={submitForm} class="max-w-sm mx-auto">
-                <div class="mb-5">
+                <div className="mb-5">
                   <label
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -245,7 +246,7 @@ const Home = () => {
                   <input
                     type="text"
                     id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Name of Food"
                     required
                     value={name}
@@ -255,7 +256,7 @@ const Home = () => {
                 <div class="mb-5">
                   <label
                     for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Ingredients
                   </label>
@@ -263,7 +264,7 @@ const Home = () => {
                     type="text"
                     id="password"
                     placeholder="Enter Ingredients"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     value={ingredients}
                     onChange={getIngredients}
@@ -272,14 +273,14 @@ const Home = () => {
                 <div class="mb-5">
                   <label
                     for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Description
                   </label>
                   <textarea
                     id="message"
                     rows="4"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Write Description About Food..."
                     onChange={getDescription}
                     value={Description}
@@ -288,14 +289,14 @@ const Home = () => {
                 <div class="mb-5">
                   <label
                     for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Upload Image
                   </label>
                   <input
                     type="text"
                     id="image"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                     value={imageFile}
                     onChange={getImageFile}

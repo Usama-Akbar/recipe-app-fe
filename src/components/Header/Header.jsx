@@ -1,25 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import foodLogo from '../../assets/foodLOgo.png'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../Button/Button";
+import { ToastContainer, toast } from "react-toastify";
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-const  Navbar = () => {
- 
+  const token = localStorage.getItem("token");
+  const handleLogout = () => {
+    if (token) {
+      localStorage.removeItem("token");
+      navigate("/");
+      toast.success("User Logout Successfully");
+      // setIsLoggedIn(false); // Update isLoggedIn state after successful logout
+    } else {
+      toast.error("Token not found in localStorage");
+    }
+  };
 
   return (
     <>
-      <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
-          <Link className="text-[22px] font-[500]" to="/">
+      <ToastContainer />
+      <nav className="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-3">
+          <Link className="text-[22px] font-[500]" to="/home">
             Food Recipes
           </Link>
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-           <img src={foodLogo} alt="Logo" width={50}/>
+          <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+            {token && (
+              <Button
+                title="Logout"
+                className="bg-red-600 hover:bg-red-500"
+                onClick={handleLogout}
+              />
+            )}
           </div>
         </div>
       </nav>
-      
     </>
   );
-}
+};
 
 export default Navbar;

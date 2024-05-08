@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -30,14 +31,15 @@ function Register() {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === true) {
+          toast.success(data.message);
           setIsLoggedIn(true);
+          
         }
-        setResponseMessage(data.message);
         navigate('/')
       })
       .catch((error) => {
         console.error("Error:", error);
-        setResponseMessage("Error occurred while registering.");
+        toast.error(error.message);
       });
   };
 
@@ -47,6 +49,7 @@ function Register() {
 
   return (
     <>
+    <ToastContainer />
       <h1 className="text-center lg:text-[26px] font-[600]">Registration Form</h1>
       <form onSubmit={handleSubmit} className="max-w-sm lg:mx-auto mx-4 my-20">
         <div className="mb-5">
