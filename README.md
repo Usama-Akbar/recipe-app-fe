@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# README.md
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+This project is a frontend application built with React.js that provides functionalities for user authentication, registration, managing recipes, and interacting with a backend API built with Express.js.
 
-## Available Scripts
+## Installation and Setup
+To run the project locally, follow these steps:
 
-In the project directory, you can run:
+1. Clone the repository from the provided source.
+2. Navigate to the project directory.
+3. Install dependencies by running `npm install`.
+4. Start the frontend server by running `npm start`.
+5. Ensure that the frontend server is running at `localhost:3000` or the appropriate address.
 
-### `npm start`
+## Frontend Structure
+The frontend application follows a typical structure for a React.js project. Here's an overview of the key directories and files:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **src/**: Contains the main source code of the frontend application.
+  - **components/**: Contains reusable UI components used throughout the application.
+  - **pages/**: Contains different pages of the application, such as Login, Register, Home, etc.
+  - **services/**: Contains service files responsible for handling API requests and responses.
+  - **utils/**: Contains utility functions used across the application.
+  - **App.js**: Entry point of the application.
+  - **index.js**: Main file for rendering the React application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Functionality
+The frontend application provides the following functionality:
 
-### `npm test`
+- User authentication and registration.
+- Accessing the home page upon successful login, displaying all recipes.
+- Adding a new recipe through a modal dialog.
+- Viewing details of a single recipe, including options to edit or delete it.
+- Searching for recipes by name using the search field on the home page.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Available Endpoints
+The backend API provides the following endpoints for interacting with the system:
 
-### `npm run build`
+### Recipe CRUD
+- **POST** `/home`: Create a new food recipe.
+- **GET** `/home`: Retrieve all food recipe.
+- **GET** `/detail/:id`: Retrieve a single food recipe by ID.
+- **PUT** `/updateform/:id`: Update a food recipe by ID.
+- **DELETE** `/detail/:id`: Delete a food recipe by ID.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Users Management
+- **POST** `/register`: Register a new user.
+- **POST** `/`: Log in an existing user.
+## Technologies Used
+The frontend of the project is built using React.js, while the backend is developed with Express.js. The database used is MongoDB for storing car and user data. Authentication is handled using JWT (JSON Web Tokens), 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
